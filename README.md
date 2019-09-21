@@ -33,4 +33,12 @@ docker-compose up -d
 
 * yapi: http://127.0.0.1:3000
 
+> Try to restart `yapi` If you have problems:
 
+```bash
+docker restart yapi
+
+# or
+
+docker-compose restart yapi
+```
