@@ -1,0 +1,10 @@
+.git/
+.gitignore
+Dockerfile
+LICENSE
+README.md
+docker-compose.yml
+yapi-mongodata/
+mongodata
+log
+*.tar.gz
