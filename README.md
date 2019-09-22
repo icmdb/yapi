@@ -25,7 +25,7 @@ docker-compose pull
 docker-compose up -d
 ```
 
-* Create a database named `yapi` by `mongo-express` http://127.0.0.1:8181:
+* Create a database named `yapi` by `yapi-mongo-express` http://127.0.0.1:8081 
 
 ![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-mongo-express-1.jpg)
 ![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-mongo-express-2.jpg)
