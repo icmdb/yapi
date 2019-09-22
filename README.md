@@ -19,6 +19,8 @@ git clone git@github.com:icmdb/yapi.git
 
 cd yapi
 
+docker-compose pull
+
 # This may take 30 seconds unitl yapi-mongo get ready.
 docker-compose up -d
 ```
@@ -33,7 +35,7 @@ docker-compose up -d
 
 * yapi: http://127.0.0.1:3000
 
-> Try to restart `yapi` If you have problems:
+> Try to restart `yapi` if you have problems:
 
 ```bash
 docker restart yapi
