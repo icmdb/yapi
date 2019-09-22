@@ -42,7 +42,7 @@ services:
       #- ME_CONFIG_SITE_SESSIONSECRET=YapiMongoExpressSessionSecret
       #- ME_CONFIG_OPTIONS_READONLY=0
     ports:
-      - 127.0.0.1:8081:8081
+      - 8081:8081
     links:
       - yapi-mongo:mongo.loc.icmdb.vip
     restart: always
