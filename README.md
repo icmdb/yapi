@@ -30,9 +30,7 @@ docker-compose up -d
 
 > Try to iterms below if you have problems:
 
-* Create a database named `yapi` by `yapi-mongo-express` http://127.0.0.1:8081 
-
-**Default username/password**: _admin/YapiMongoExpressPassw0rd_ , details see [docker-compose.yml](docker-compose.yml).
+* Create a database named `yapi` by `yapi-mongo-express` http://127.0.0.1:8081 with **default username/password**: _admin/YapiMongoExpressPassw0rd_ , details see [docker-compose.yml](docker-compose.yml).
 
 ![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-mongo-express-1.jpg)
 ![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-mongo-express-2.jpg)
@@ -46,3 +44,23 @@ docker restart yapi
 
 docker-compose restart yapi
 ```
+
+## Deploy in kubernetes
+
+```bash
+YAPI_DOMAIN="domain.com"    # your domain
+
+git clone git@github.com:icmdb/yapi.git
+
+cd yapi/k8s
+
+grep icmdb.vip -rl ./ `sed -i 's#icmdb.vip#${YAPI_DOMAIN}#g'`
+
+kubectl apply -f .
+```
+
+
+## Todo List
+
+* [x] Yaml for k8s
+* [ ] Helm Charts

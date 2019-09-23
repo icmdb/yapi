@@ -1,0 +1,16 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: yapi-yapi
+  name: yapi-yapi
+  namespace: icmdb-test
+spec:
+  rules:
+  - host: yapi.test.icmdb.vip
+    http:
+      paths:
+      - backend:
+          serviceName: yapi-yapi
+          servicePort: 3000

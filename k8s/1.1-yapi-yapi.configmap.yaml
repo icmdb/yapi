@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+data:
+  run.sh: |-
+    {
+        "port":         "3000",
+        "adminAccount": "admin@icmdb.vip",
+        "db": {
+            "servername": "mongo.test.icmdb.vip",
+            "DATABASE":   "yapi",
+            "port":       "27017",
+            "user":       "root",
+            "pass":       "YapiMongoPassw0rd",
+            "authSource": "admin"
+        },
+        "mail": {
+            "enable": true,
+            "host":  "smtpdm.aliyun.com",
+            "port":   465,
+            "from":  "notice@mail.icmdb.vip",
+            "auth": {
+                "user": "notice@mail.icmdb.vip",
+                "pass": "bm90aWNlQG1haWwuaWNt"
+            }
+        }
+    }
+kind: ConfigMap
+metadata:
+  name: yapi-yapi
+  namespace: icmdb-test

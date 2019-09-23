@@ -4,7 +4,8 @@ Dockerfile
 LICENSE
 README.md
 docker-compose.yml
+images/
+k8s/
+yapilog/
 yapi-mongodata/
-mongodata
-log
 *.tar.gz
