@@ -67,7 +67,6 @@ tags
 # End of https://www.gitignore.io/api/vim,linux,macos
 
 images/
-k8s/
 yapilog/
 yapi-mongodata/
 *.tar.gz

@@ -13,6 +13,7 @@ RUN set -xue \
 
 
 FROM node:8.16.1-jessie
+ENV YAPI_VERSION=1.8.3
 COPY --from=builder /app/yapi /app/yapi
 COPY docker-entrypoint.sh     /app/
 COPY          config.json     /app/
