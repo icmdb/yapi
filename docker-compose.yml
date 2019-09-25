@@ -76,7 +76,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./yapilog/log/:/app/yapi/log/
+      - ./yapi-log/log/:/app/yapi/log/
     links:
       - yapi-mongo:mongo.loc.icmdb.vip
     restart: on-failure

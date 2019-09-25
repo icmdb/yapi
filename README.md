@@ -46,6 +46,11 @@ docker restart yapi
 # or
 
 docker-compose restart yapi
+
+# Remove []
+docker-compose down
+rm -rf ./yapi-mongodata/
+rm -rf ./yapi-log/
 ```
 
 ## Deploy in kubernetes
