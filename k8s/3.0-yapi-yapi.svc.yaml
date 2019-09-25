@@ -5,7 +5,7 @@ metadata:
   labels:
     app: yapi-yapi
   name: yapi-yapi
-  namespace: icmdb-test
+  namespace: icmdb-yapi
 spec:
   externalTrafficPolicy: Cluster
   ports:

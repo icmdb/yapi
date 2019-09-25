@@ -4,6 +4,7 @@ Dockerfile
 LICENSE
 README.md
 docker-compose.yml
+backup/
 images/
 k8s/
 yapilog/

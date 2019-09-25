@@ -3,7 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: yapi-yapi
-  namespace: icmdb-test
+  namespace: icmdb-yapi
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

@@ -27,4 +27,4 @@ data:
 kind: ConfigMap
 metadata:
   name: yapi-yapi
-  namespace: icmdb-test
+  namespace: icmdb-yapi

@@ -1,8 +1,10 @@
 # yapi
 
-A project used to build a docker image for YMFE/yapi.
+YApi is a visualized interface management platform that can be deployed locally, connecting front and back end and QA
 
-* [Docs for English]()
+This project is used to build/start YMFE/yapi with docker for one key start.
+
+* [Docs for English](README.md)
 * [中文文档](README_CN.md)
 
 ## Reference
@@ -71,6 +73,7 @@ kubectl apply -f .
 ## Todo List
 
 * [ ] README_CN.md
+* [x] Backup mongodata
 * [x] Yaml for k8s
 * [ ] Helm Charts
 * [ ] Plugins
