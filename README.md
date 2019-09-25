@@ -2,6 +2,9 @@
 
 A project used to build a docker image for YMFE/yapi.
 
+* [Docs for English]()
+* [中文文档](README_CN.md)
+
 ## Reference
 
 * [YMFE/yapi - GitHub](https://github.com/YMFE/yapi)
@@ -54,7 +57,7 @@ git clone git@github.com:icmdb/yapi.git
 
 cd yapi/k8s
 
-grep icmdb.vip -rl ./ `sed -i 's#icmdb.vip#${YAPI_DOMAIN}#g'`
+grep icmdb.vip -rl ./ | xargs sed -i 's#icmdb.vip#${YAPI_DOMAIN}#g'
 
 kubectl apply -f .
 ```
@@ -62,5 +65,15 @@ kubectl apply -f .
 
 ## Todo List
 
+* [ ] README_CN.md
 * [x] Yaml for k8s
 * [ ] Helm Charts
+* [ ] Plugins
+    * [ ] sso
+    * [ ] cas
+    * [ ] oauth2.0
+    * [ ] rap
+    * [ ] dingding
+    * [ ] export-docx-data
+    * [ ] interface-oauth-token
+    * [ ] import-swagger-customize
