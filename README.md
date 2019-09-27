@@ -20,7 +20,7 @@ This project is used to build/start YMFE/yapi with docker for one key start.
 * Start `yapi`, `mongo`, `mongo-express`:
 
 ```bash
-git clone git@github.com:icmdb/yapi.git
+git clone https://github.com/icmdb/yapi.git
 
 cd yapi
 
