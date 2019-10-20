@@ -9,4 +9,5 @@ images/
 k8s/
 yapilog/
 yapi-mongodata/
+yapidata/
 *.tar.gz
