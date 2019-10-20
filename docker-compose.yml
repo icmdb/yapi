@@ -1,4 +1,4 @@
-# @createby: teachmyself@126.com
+# @createby: ihanyouqing@gmail.com
 # @reference:
 #       https://hub.docker.com/_/mongo
 #       https://hub.docker.com/_/mongo-express
@@ -18,12 +18,12 @@ services:
     image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=YapiMongoPassw0rd
+      - MONGO_INITDB_ROOT_PASSWORD=Passw0rd4MongoRoot
       - MONGO_INITDB_DATABASE=yapi
     ports: 
       - 27017:27017
     volumes:
-      - ./yapi-mongodata/db:/data/db
+      - ./yapidata/mongodata:/data/db
     restart: always
 
   yapi-mongo-express:
@@ -35,9 +35,9 @@ services:
     environment:
       - ME_CONFIG_MONGODB_SERVER=mongo.loc.icmdb.vip
       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=YapiMongoPassw0rd
-      - ME_CONFIG_BASICAUTH_USERNAME=admin
-      - ME_CONFIG_BASICAUTH_PASSWORD=YapiMongoExpressPassw0rd
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=Passw0rd4MongoRoot
+      - ME_CONFIG_BASICAUTH_USERNAME=yapi
+      - ME_CONFIG_BASICAUTH_PASSWORD=Passw0rd4MongoExpressYapi
       #- ME_CONFIG_SITE_COOKIESECRET=YapiMongoExpressCookieSecret
       #- ME_CONFIG_SITE_SESSIONSECRET=YapiMongoExpressSessionSecret
       #- ME_CONFIG_OPTIONS_READONLY=0
@@ -65,18 +65,18 @@ services:
       - YAPI_DB_NAME=yapi
       - YAPI_DB_PORT=27017
       - YAPI_DB_USER=root
-      - YAPI_DB_PASS=YapiMongoPassw0rd
+      - YAPI_DB_PASS=Passw0rd4MongoRoot
       - YAPI_DB_AUTH=admin
       - YAPI_MAIL_ENABLE=true
       - YAPI_MAIL_HOST=smtpdm.aliyun.com
       - YAPI_MAIL_PORT=465
       - YAPI_MAIL_FROM=notice@mail.icmdb.vip
-      - YAPI_MAIL_USER=YAPI_MAIL_FROM
+      - YAPI_MAIL_USER=notice
       - YAPI_MAIL_PASS=bm90aWNlQG1haWwuaWNt
     ports:
       - 3000:3000
     volumes:
-      - ./yapi-log/log/:/app/yapi/log/
+      - ./yapidata/log/:/app/log/
     links:
       - yapi-mongo:mongo.loc.icmdb.vip
     restart: on-failure

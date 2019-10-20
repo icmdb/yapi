@@ -24,24 +24,18 @@ YAPI_MAIL_USER="${YAPI_MAIL_USER:=${YAPI_MAIL_FROM}}"
 YAPI_MAIL_PASS="${YAPI_MAIL_PASS:=YapiMailPassw0rd}"
 
 
-[ "${YAPI_DEBUG}" == 1 ] && set -xe
-if [ ! -z "${YAPI_DELAY}" ]; then
-    echo ""
-    echo "Yapi will start in ${YAPI_DELAY} seconds..."
-    echo ""
-    sleep ${YAPI_DELAY}
-fi
-
-yapi_db_config() {
-    for envar in YAPI_ACOUNT YAPI_DB_HOST YAPI_DB_NAME YAPI_DB_PORT YAPI_DB_USER YAPI_DB_PASS YAPI_DB_AUTH
-    do
-        local holder=$(eval echo '$'${envar})
-        sed -i "s#"${envar}"#"${holder}"#g"   /app/config.json
-    done
-    sed -i       "s#YAPI_PORT#${YAPI_PORT}#g" /app/config.json
-    sed -i "s#YAPI_DB_PORT#${YAPI_DB_PORT}#g" /app/config.json
+yapi_debug() {
+    if [ "${YAPI_DEBUG}" == 1 ]; then
+        set -xe
+        PS4='+ $(date +"%F %T%z") ${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+    fi
+    if [ "${YAPI_DELAY}" -gt 0 ]; then
+        echo ""
+        echo "Yapi will start in ${YAPI_DELAY} seconds..."
+        echo ""
+        sleep ${YAPI_DELAY}
+    fi
 }
-
 yapi_mail_config(){
     local holder
     if [ "${YAPI_MAIL_ENABLE}" == "true" ]; then
@@ -53,8 +47,33 @@ yapi_mail_config(){
         sed -i "s#YAPI_MAIL_PORT#${YAPI_MAIL_PORT}#g" /app/config.json
     fi
 }
+yapi_db_check() {
+    while (:;)
+    do
+        nc -zv ${YAPI_DB_HOST} ${YAPI_DB_PORT}
+        if [ $? -ne 0 ]; then
+            echo "[$(date '+%F %T%z')] [error] Failed to connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
+            sleep 1
+        else
+            echo "[$(date '+%F %T%z')] [info] Sucessfully connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
+            break
+        fi
+    done
+}
+yapi_db_config() {
+    for envar in YAPI_ACOUNT YAPI_DB_HOST YAPI_DB_NAME YAPI_DB_PORT YAPI_DB_USER YAPI_DB_PASS YAPI_DB_AUTH
+    do
+        local holder=$(eval echo '$'${envar})
+        sed -i "s#"${envar}"#"${holder}"#g"   /app/config.json
+    done
+    sed -i       "s#YAPI_PORT#${YAPI_PORT}#g" /app/config.json
+    sed -i "s#YAPI_DB_PORT#${YAPI_DB_PORT}#g" /app/config.json
+}
 
-yapi_db_config
+
+yapi_debug
 yapi_mail_config
+yapi_db_config
+yapi_db_check
 
 exec node /app/yapi/server/app.js "${@}"
