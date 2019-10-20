@@ -24,11 +24,11 @@ spec:
       containers:
       - env:
         - name: YAPI_ACOUNT
-          value: admin@icmdb.vip
+          value: yapi@icmdb.vip
         - name: YAPI_DB_AUTH
           value: admin
         - name: YAPI_DB_HOST
-          value: mongo.test.icmdb.vip
+          value: mongo.icmdb-yapi.icmdb.vip
         - name: YAPI_DB_NAME
           value: yapi
         - name: YAPI_DB_PASS
@@ -52,7 +52,7 @@ spec:
         - name: YAPI_MAIL_PORT
           value: "465"
         - name: YAPI_MAIL_USER
-          value: YAPI_MAIL_FROM
+          value: Yapi
         - name: YAPI_PORT
           value: "3000"
         image: icmdb/yapi:1.8.3

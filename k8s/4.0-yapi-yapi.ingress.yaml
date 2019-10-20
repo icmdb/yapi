@@ -8,7 +8,7 @@ metadata:
   namespace: icmdb-yapi
 spec:
   rules:
-  - host: yapi.test.icmdb.vip
+  - host: yapi.icmdb-yapi.icmdb.vip
     http:
       paths:
       - backend:

@@ -62,7 +62,7 @@ services:
       - YAPI_DEBUG=1
       - YAPI_DELAY=3
       - YAPI_PORT=3000
-      - YAPI_ACOUNT=admin@icmdb.vip
+      - YAPI_ACOUNT=yapi@icmdb.vip
       - YAPI_DB_HOST=mongo.loc.icmdb.vip
       - YAPI_DB_NAME=yapi
       - YAPI_DB_PORT=27017
@@ -73,7 +73,7 @@ services:
       - YAPI_MAIL_HOST=smtpdm.aliyun.com
       - YAPI_MAIL_PORT=465
       - YAPI_MAIL_FROM=notice@mail.icmdb.vip
-      - YAPI_MAIL_USER=notice
+      - YAPI_MAIL_USER=Yapi
       - YAPI_MAIL_PASS=bm90aWNlQG1haWwuaWNt
     ports:
       - 3000:3000

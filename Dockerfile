@@ -1,5 +1,5 @@
 # @debug:
-#   docker run --rm -ti --name debug -p 9090:9090 -v yapi:/root/yapi node:8.16.1-jessie bash
+#   docker run --rm -ti --name debug -p 3000:3000-v $(pwd):/app/yapi node:8.16.1-jessie bash
 #
 FROM node:8.16.1-jessie as builder
 ARG YAPI_VERSION="1.8.5"
@@ -23,7 +23,7 @@ COPY --from=builder /app/yapi-${YAPI_VERSION} /app/yapi
 COPY docker-entrypoint.sh /app/
 COPY          config.json /app/
 WORKDIR /app/
-RUN     npm install -g yapi-cli --registry ${NPM_REGISTRY} \
+RUN     npm install -g yapi-cli --registry https://registry.npm.taobao.org \
      && apt-get update && apt-get -y install \
             netcat \
      && apt-get clean all \

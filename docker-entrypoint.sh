@@ -36,7 +36,7 @@ yapi_debug() {
         sleep ${YAPI_DELAY}
     fi
 }
-yapi_mail_config(){
+yapi_mail_config() {
     local holder
     if [ "${YAPI_MAIL_ENABLE}" == "true" ]; then
         for envar in YAPI_MAIL_ENABLE YAPI_MAIL_HOST YAPI_MAIL_FROM YAPI_MAIL_USER YAPI_MAIL_PASS
@@ -54,6 +54,7 @@ yapi_db_check() {
         if [ $? -ne 0 ]; then
             echo "[$(date '+%F %T%z')] [error] Failed to connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
             sleep 1
+            continue
         else
             echo "[$(date '+%F %T%z')] [info] Sucessfully connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
             break

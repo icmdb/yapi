@@ -4,13 +4,13 @@ data:
   run.sh: |-
     {
         "port":         "3000",
-        "adminAccount": "admin@icmdb.vip",
+        "adminAccount": "yapi@icmdb.vip",
         "db": {
-            "servername": "mongo.test.icmdb.vip",
+            "servername": "mongo.icmdb-yapi.icmdb.vip",
             "DATABASE":   "yapi",
             "port":       "27017",
             "user":       "root",
-            "pass":       "YapiMongoPassw0rd",
+            "pass":       "Passw0rd4MongoRoot",
             "authSource": "admin"
         },
         "mail": {
