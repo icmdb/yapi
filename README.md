@@ -52,19 +52,20 @@ Then you can access:
 
 |Name      |URL                    |Memo|
 |----------|-----------------------|----|
-|Yapi      |http://127.0.0.1:3000  |Sign up with `yapi@icmdb.vip` (you can change it in [docker-compose.yaml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml))|
+|Yapi      |http://127.0.0.1:3000  |Sign up with `yapi@icmdb.vip`|
 |Mongo     |mongo://127.0.0.1:27017|root / Passw0rd4MongoRoot|
 |MongoAdmin|http://127.0.0.1:8081  |yapi / Passw0rd4MongoExpressYapi|
-
-![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi.jpg)
-![Sign up yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-signup.jpg)
 
 * Details see: 
     * [docker-compose.yml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml)
     * [docker-entrypoint.sh](https://github.com/icmdb/yapi/blob/master/docker-entrypoint.sh)
     * `docker logs yapi` or `docker-compose logs yapi`
+* You can change configs in `docker-compose.yml`, then run: `docker-compose up -d` to recreate container.
 
-You can change configs in `docker-compose.yml`, then run: `docker-compose up -d` to recreate container.
+
+
+![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi.jpg)
+![Sign up yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-signup.jpg)
 
 
 ## Deploy in kubernetes

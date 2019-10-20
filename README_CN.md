@@ -50,19 +50,17 @@ docker-compose restart yapi
 
 |Name      |URL                    |Memo|
 |----------|-----------------------|----|
-|Yapi      |http://127.0.0.1:3000  |使用`yapi@icmdb.vip`注册,(可在[docker-compose.yaml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml)中修改)|
+|Yapi      |http://127.0.0.1:3000  |使用`yapi@icmdb.vip`注册|
 |Mongo     |mongo://127.0.0.1:27017|root / Passw0rd4MongoRoot|
 |MongoAdmin|http://127.0.0.1:8081  |yapi / Passw0rd4MongoExpressYapi|
-
-![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi.jpg)
-![Sign up yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-signup.jpg)
-
 
 * Details see: 
     * [docker-compose.yml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml)
     * `docker logs yapi` or `docker-compose logs yapi`
+* 可修改 [docker-compose.yml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml) 变更默认配置, 然后执行 `docker-compose up -d` 命令重建容器.
 
-可修改 [docker-compose.yml](https://github.com/icmdb/yapi/blob/master/docker-compose.yml)变更默认配置, 然后执行 `docker-compose up -d` 命令重建容器.
+![Create database yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi.jpg)
+![Sign up yapi](https://raw.githubusercontent.com/icmdb/yapi/master/images/yapi-signup.jpg)
 
 
 ## Deploy in kubernetes
