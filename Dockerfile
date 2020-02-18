@@ -2,7 +2,7 @@
 #   docker run --rm -ti --name debug -p 3000:3000-v $(pwd):/app/yapi node:8.16.1-jessie bash
 #
 FROM node:8.16.1-jessie as builder
-ARG YAPI_VERSION="1.8.5"
+ARG YAPI_VERSION="1.8.7"
 ARG NPM_REGISTRY="https://registry.npmjs.org/"
 ADD https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz /app/
 RUN set -xue \
@@ -15,7 +15,7 @@ RUN set -xue \
 
 FROM node:8.16.1-jessie
 ARG NPM_REGISTRY="https://registry.npmjs.org/"
-ENV YAPI_VERSION="1.8.5" \
+ENV YAPI_VERSION="1.8.7" \
     YAPI_SOURCE_URL=https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz  \
     YAPI_IMAGE_URL=https://hub.docker.com/r/icmdb/yapi \
     YAPI_IMAGE_MAINTAINER="ihanyouqing@gmail.com" 
