@@ -1,8 +1,9 @@
 #!/bin/bash
 
-set -eo pipefail
+set -exo pipefail
 shopt -s nullglob
 
+PS4='+ $(date +"%F %T%z") ${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 YAPI_DEBUG="${YAPI_DEBUG:=}"
 YAPI_DELAY="${YAPI_DELAY:=3}"
