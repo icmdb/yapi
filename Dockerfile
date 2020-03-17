@@ -15,7 +15,7 @@ RUN set -xue \
 
 FROM node:8.16.1-jessie
 ARG NPM_REGISTRY="https://registry.npmjs.org/"
-ENV YAPI_VERSION="1.8.7" \
+ENV YAPI_VERSION="1.8.9" \
     YAPI_SOURCE_URL=https://github.com/YMFE/yapi/archive/v${YAPI_VERSION}.tar.gz  \
     YAPI_IMAGE_URL=https://hub.docker.com/r/icmdb/yapi \
     YAPI_IMAGE_MAINTAINER="ihanyouqing@gmail.com" 
@@ -26,6 +26,7 @@ WORKDIR /app/
 RUN     npm install -g yapi-cli --registry https://registry.npm.taobao.org \
      && apt-get update && apt-get -y install \
             netcat \
+            apt-utils \
      && apt-get clean all \
      && rm -rf /usr/share/man/* /usr/share/doc/* /var/lib/apt/* /var/log/apt/*.log ~/.npm/
 EXPOSE 3000
