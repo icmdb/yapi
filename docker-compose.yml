@@ -33,7 +33,7 @@ services:
     hostname: yapi-mongo-express
     image: mongo-express
     environment:
-      - ME_CONFIG_MONGODB_SERVER=mongo.loc.icmdb.vip
+      - ME_CONFIG_MONGODB_SERVER=yapi-mongo.loc.icmdb.vip
       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
       - ME_CONFIG_MONGODB_ADMINPASSWORD=Passw0rd4MongoRoot
       - ME_CONFIG_BASICAUTH_USERNAME=yapi
@@ -44,7 +44,7 @@ services:
     ports:
       - 8081:8081
     links:
-      - yapi-mongo:mongo.loc.icmdb.vip
+      - yapi-mongo:yapi-mongo.loc.icmdb.vip
     restart: always
     
   yapi:
@@ -63,7 +63,7 @@ services:
       - YAPI_DELAY=3
       - YAPI_PORT=3000
       - YAPI_ACOUNT=yapi@icmdb.vip
-      - YAPI_DB_HOST=mongo.loc.icmdb.vip
+      - YAPI_DB_HOST=yapi-mongo.loc.icmdb.vip
       - YAPI_DB_NAME=yapi
       - YAPI_DB_PORT=27017
       - YAPI_DB_USER=root
@@ -80,5 +80,6 @@ services:
     volumes:
       - ./yapidata/log/:/app/log/
     links:
-      - yapi-mongo:mongo.loc.icmdb.vip
-    restart: on-failure
+      - yapi-mongo:yapi-mongo.loc.icmdb.vip
+    #command: sleep 1000
+    restart: "no"

@@ -7,10 +7,11 @@ PS4='+ $(date +"%F %T%z") ${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0
 
 YAPI_DEBUG="${YAPI_DEBUG:=}"
 YAPI_DELAY="${YAPI_DELAY:=3}"
+YAPI_DIR="${YAPI_DIR:=/app/yapi}"
 
 YAPI_PORT="${YAPI_PORT:=3000}"
 YAPI_ACOUNT="${YAPI_ACOUNT:=help@icmdb.vip}"
-YAPI_DB_HOST="${YAPI_DB_HOST:=mongo.loc.icmdb.vip}"
+YAPI_DB_HOST="${YAPI_DB_HOST:=yapi-mongo.loc.icmdb.vip}"
 YAPI_DB_NAME="${YAPI_DB_NAME:=yapi}"
 YAPI_DB_PORT="${YAPI_DB_PORT:=27017}"
 YAPI_USER="${YAPI_USER:=root}"
@@ -49,18 +50,22 @@ yapi_mail_config() {
     fi
 }
 yapi_db_check() {
+    set +e
+    local retry=0
     while (:;)
     do
         nc -zv ${YAPI_DB_HOST} ${YAPI_DB_PORT}
         if [ $? -ne 0 ]; then
-            echo "[$(date '+%F %T%z')] [error] Failed to connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
+            echo "[$(date '+%F %T%z')] [error] Failed to connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}, retrying ${retry} ..."
+            retry=$[ retry + 1 ]
             sleep 1
             continue
         else
-            echo "[$(date '+%F %T%z')] [info] Sucessfully connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}."
+            echo "[$(date '+%F %T%z')] [info] Sucessfully connect mongodb $(hostname)->${YAPI_DB_HOST}:${YAPI_DB_PORT}, retry ${retry} times."
             break
         fi
     done
+    set +e
 }
 yapi_db_config() {
     for envar in YAPI_ACOUNT YAPI_DB_HOST YAPI_DB_NAME YAPI_DB_PORT YAPI_DB_USER YAPI_DB_PASS YAPI_DB_AUTH
@@ -78,4 +83,4 @@ yapi_mail_config
 yapi_db_config
 yapi_db_check
 
-exec node /app/yapi/server/app.js "${@}"
+exec node ${YAPI_DIR}/server/app.js "${@}"
