@@ -57,7 +57,7 @@ services:
         - NPM_REGISTRY=https://registry.npm.taobao.org
     container_name: yapi
     hostname: yapi
-    image: icmdb/yapi
+    image: icmdb/yapi:1.9.2
     environment:
       - YAPI_DEBUG=1
       - YAPI_DELAY=3
