@@ -5,9 +5,8 @@ metadata:
   labels:
     app: yapi-yapi
   name: yapi-yapi
-  namespace: icmdb-yapi
+  namespace: yapi-dev
 spec:
-  externalTrafficPolicy: Cluster
   ports:
   - name: http
     port: 3000
@@ -15,5 +14,4 @@ spec:
     targetPort: http
   selector:
     app: yapi-yapi
-  type: NodePort
-#  type: ClusterIP
+  type: ClusterIP

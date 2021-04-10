@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: yapi-mongo
+  name: yapi-mongo
+  namespace: yapi-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yapi-mongo
+  template:
+    metadata:
+      labels:
+        app: yapi-mongo
+    spec:
+      containers:
+      - image: mongo
+        name: mongo
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_ROOT_USERNAME
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_ROOT_PASSWORD
+          - name: MONGO_INITDB_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_DATABASE
+        resources: 
+          requests:
+            cpu: 100m
+            memory: 100m
+          limits:
+            cpu: 100m
+            memory: 100m
+
+      - image: mongo-express
+        name: mongo-express
+        env:
+          - name: ME_CONFIG_MONGODB_SERVER
+            value: yapi-mongo
+          - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+            value: root
+          - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_ROOT_PASSWORD
+          - name: ME_CONFIG_BASICAUTH_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_YAPI_USERNAME
+          - name: ME_CONFIG_BASICAUTH_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: yapi-mongo
+                key: MONGO_INITDB_YAPI_PASSWORD
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100m
+          limits:
+            cpu: 100m
+            memory: 100m
+      volumes:
+        - name: yapi-mongo-volume
+          secret:
+            secretName: yapi-mongo
+        

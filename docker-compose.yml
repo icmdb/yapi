@@ -53,8 +53,8 @@ services:
     build:
       context: ./
       dockerfile: ./Dockerfile
-      args: 
-        - NPM_REGISTRY=https://registry.npm.taobao.org
+      #      args: 
+      #        - NPM_REGISTRY=https://registry.npm.taobao.org
     container_name: yapi
     hostname: yapi
     image: icmdb/yapi:1.9.2

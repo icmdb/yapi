@@ -1,9 +1,9 @@
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: yapi-yapi
-  namespace: icmdb-yapi
+  namespace: yapi-dev
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -28,7 +28,7 @@ spec:
         - name: YAPI_DB_AUTH
           value: admin
         - name: YAPI_DB_HOST
-          value: mongo.icmdb-yapi.icmdb.vip
+          value: yapi-mongo
         - name: YAPI_DB_NAME
           value: yapi
         - name: YAPI_DB_PASS

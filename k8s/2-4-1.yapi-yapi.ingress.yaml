@@ -5,10 +5,10 @@ metadata:
   labels:
     app: yapi-yapi
   name: yapi-yapi
-  namespace: icmdb-yapi
+  namespace: yapi-dev
 spec:
   rules:
-  - host: yapi.icmdb-yapi.icmdb.vip
+  - host: yapi.yapi-yapi.icmdb.vip
     http:
       paths:
       - backend:
